@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Countdown</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 20vw;
+            overflow: hidden;
+        }
+        #countdown {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const newYear = new Date('January 1, 2025 00:00:00').getTime();
+            const distance = newYear - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            let minutesString = String(minutes);
+            let secondsString = String(seconds);
+
+            if (minutes < 10) {
+                minuteString = "0" + minutes;
+            }
+            if (seconds < 10) {
+                secondsString = "0" + seconds;
+            }
+
+            document.getElementById("countdown").innerHTML = hours + ":" + minuteString + ":" + secondsString;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "2025";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
