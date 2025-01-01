@@ -38,6 +38,7 @@
 
             let minutesString = String(minutes);
             let secondsString = String(seconds);
+            let targetString = "";
 
             if (minutes < 10) {
                 minutesString = "0" + minutes;
@@ -45,12 +46,22 @@
             if (seconds < 10) {
                 secondsString = "0" + seconds;
             }
-
-            document.getElementById("countdown").innerHTML = hours + ":" + minutesString + ":" + secondsString;
+            if (hours == 0) {
+                if (minutes == 0) {
+                    targetString = secondsString;
+                }
+                else {
+                    targetString = minutesString + ":" + secondsString;
+                }
+            } else {
+                targetString = hours + ":" + minutesString + ":" + secondsString;
+            }
 
             if (distance < 0) {
-                document.getElementById("countdown").innerHTML = "2025";
+                targetString = "2025";
             }
+
+            document.getElementById("countdown").innerHTML = targetString;
         }
 
         setInterval(updateCountdown, 1000);
