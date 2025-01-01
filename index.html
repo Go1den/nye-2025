@@ -40,13 +40,13 @@
             let secondsString = String(seconds);
 
             if (minutes < 10) {
-                minuteString = "0" + minutes;
+                minutesString = "0" + minutes;
             }
             if (seconds < 10) {
                 secondsString = "0" + seconds;
             }
 
-            document.getElementById("countdown").innerHTML = hours + ":" + minuteString + ":" + secondsString;
+            document.getElementById("countdown").innerHTML = hours + ":" + minutesString + ":" + secondsString;
 
             if (distance < 0) {
                 document.getElementById("countdown").innerHTML = "2025";
